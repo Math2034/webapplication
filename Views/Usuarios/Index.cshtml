@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication2.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="margin-bottom: 15px">Usuários</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Data de Nascimento</th>
+            <th>Rendimento (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data_Nascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rendimento)
+                </td>
+                <td>
+                    <a class="icone" style="font-size: 20px;" asp-route-id="@item.Id" asp-action="edit" type="submit"><i class="bi bi-pen-fill"></i></a>
+                    <a class="icone" style="font-size: 20px;" asp-route-id="@item.Id" asp-action="delete" type="submit"><i class="bi bi-trash-fill"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a style="margin-top: 15px" asp-action="Create" class="back"><i class="bi bi-plus-circle-fill">  Criar Usuário</i></a>
+</div>
+
+<style>
+   .table{
+        justify-items: end;
+        flex-direction:row;
+        align-items: flex-end;
+    }
+
+    .back {
+        background-color: #C5E3F4;
+        color: #0D65D9;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        padding: 10px 25px;
+        border: 2px solid #0D65D9;
+        border-radius: 100px;
+        display: inline-block;
+    }
+
+    .icone{
+        color: #5C9DF2;
+    }
+
+    body{
+        background-color: #F2F2F2;
+    }
+
+    a{
+        margin-left: 15px;
+    }
+</style>
